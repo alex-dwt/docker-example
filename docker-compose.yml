@@ -1,0 +1,28 @@
+version: "2"
+
+services:
+    php:
+        image: alexdwt/example-php:latest
+        build:
+            context: '.'
+            dockerfile: 'php/Dockerfile'
+        environment:
+            - DB_HOST
+            - DB_PORT
+            - DB_NAME
+            - DB_USER
+            - DB_PASS
+
+    front:
+        image: alexdwt/example-front:latest
+        build: 'nginx'
+        ports:
+              - 80:80
+
+#    database:
+#        image: postgres:9.6
+#        environment:
+#            - POSTGRES_USER=${DB_USER}
+#            - POSTGRES_DB=${DB_NAME}
+#            - POSTGRES_PASSWORD=${DB_PASS}
+#            - PGPASSWORD=${DB_PASS}

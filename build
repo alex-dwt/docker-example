@@ -2,9 +2,10 @@
 
 set -e
 
-#docker-compose build --force-rm
+docker-compose build --force-rm
+
 images=(php front)
 for image in "${images[@]}"; do
     echo "pushing image: $image"
-   # docker push $image
+    docker push $image
 done
